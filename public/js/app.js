@@ -8,5 +8,8 @@ app.config(function($routeProvider,$locationProvider,$httpProvider){
 			controller:'homeController'
 		})
 
+	$locationProvider.html5Mode(true);
+
+	$httpProvider.interceptors.push('authInterceptor');
 
 })

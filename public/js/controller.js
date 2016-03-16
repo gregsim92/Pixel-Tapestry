@@ -2,7 +2,6 @@ app.controller('homeController',['$scope','$http',
 						 function($scope,  $http){
 
 		$scope.signup = function(){
-			debugger;
 			$http({
 				method:'POST',
 				url:'/new',
@@ -15,5 +14,17 @@ app.controller('homeController',['$scope','$http',
 			});
 		}
 
+		$scope.login = function(){
+			$http({
+				method:'POST',
+				url:'/login',
+				data:$scope.logIn
+			}).then(function(data){
+				debugger
+				localStorage.setItem('jwt',data.data.jwt);
+			}).catch(function(err){
+				console.log(err)
+			});
+		}
 		
 }]);
