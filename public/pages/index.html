@@ -1,16 +1,10 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-	<title></title>
-</head>
+
 <body>
-	<label>Username
-	<input type="text" name='username'></label>
 	<label>Email
-	<input type="email" name='email'></label>
+	<input type="email" ng-model='signUp.email' name='email'></label>
 	<label>Password
-	<input type="password" name='password'></label>
+	<input type="password" ng-model='signUp.password' name='password'></label>
 	<label>Confirm Password
-	<input type="password" name='passwordConfirm'></label>
+	<input type="password" ng-model='signUp.passwordConfirm' name='passwordConfirm'></label>
+	<input type="submit" ng-click='signup()' value='Sign up'>
 </body>
-</html>

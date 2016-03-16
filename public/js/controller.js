@@ -1,7 +1,8 @@
-app.controller('mainController',['$scope','$http', 
-						function( $scope,  $http){
+app.controller('homeController',['$scope','$http', 
+						 function($scope,  $http){
 
-		$scope.signUp = function(){
+		$scope.signup = function(){
+			debugger;
 			$http({
 				method:'POST',
 				url:'/new',
@@ -15,4 +16,4 @@ app.controller('mainController',['$scope','$http',
 		}
 
 		
-}])
+}]);

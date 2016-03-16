@@ -4,9 +4,9 @@ app.config(function($routeProvider,$locationProvider,$httpProvider){
 
 	$routeProvider
 		.when('/', {
-			templateUrl:'pages/index',
+			templateUrl:'/pages/index.html',
 			controller:'homeController'
 		})
 
-	$
+
 })
