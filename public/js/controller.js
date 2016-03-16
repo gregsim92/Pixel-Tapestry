@@ -26,5 +26,9 @@ app.controller('homeController',['$scope','$http',
 				console.log(err)
 			});
 		}
+
+		$scope.logout = function() {
+			localStorage.removeItem('jwt');
+	}
 		
 }]);
