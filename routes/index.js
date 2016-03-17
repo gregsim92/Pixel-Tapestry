@@ -54,4 +54,10 @@ router.post('/login', function(req,res,next){
 	})
 })
 
+/* #TODO: Multiple tables inner join
+	knex.select(*).from('canvas')
+		.innerJoin('favorites','canvas.id','favorites.canvas_id')
+		.innerJoin('users','users.id','favorites.user_id');
+*/
+
 module.exports = router;

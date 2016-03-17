@@ -20,7 +20,6 @@ app.controller('homeController',['$scope','$http',
 				url:'/login',
 				data:$scope.logIn
 			}).then(function(data){
-				debugger
 				localStorage.setItem('jwt',data.data.jwt);
 			}).catch(function(err){
 				console.log(err)
@@ -32,3 +31,5 @@ app.controller('homeController',['$scope','$http',
 	}
 		
 }]);
+
+app.controller('canvasController', ['$scope', '$http', ])
