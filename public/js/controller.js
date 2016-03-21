@@ -36,11 +36,15 @@ app.controller('homeController',['$scope','$http',
 		
 }]);
 
-app.controller('tapestryController', ['$scope','$http', 
-							  function($scope, $http){
+app.controller('tapestryController', ['$scope','$http', 'createTapestry', 
+							  function($scope,  $http,   createTapestry){
 
 	$scope.test = 'Hello'
 	$scope.board = createTapestry.createBoard();
+
+	$scope.setBoard = function(){
+		createTapestry.loadBoard()
+	}
 }])
 
 
