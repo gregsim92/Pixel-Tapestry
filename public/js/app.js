@@ -7,8 +7,12 @@ app.config(function($routeProvider,$locationProvider,$httpProvider){
 			templateUrl:'/pages/index.html',
 			controller:'homeController'
 		})
+		.when('/tapestry', {
+			templateUrl:'/pages/canvas.html',
+			controller:'tapestryController'
+		})
+		.otherwise({ redirectTo: '/' });
 
-	$locationProvider.html5Mode(true);
 
 	$httpProvider.interceptors.push('authInterceptor');
 

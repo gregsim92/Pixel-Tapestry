@@ -1,5 +1,8 @@
 app.controller('homeController',['$scope','$http', 
 						 function($scope,  $http){
+		$scope.user = {
+			email : decoded.email
+		}
 
 		$scope.signup = function(){
 			$http({
@@ -32,3 +35,16 @@ app.controller('homeController',['$scope','$http',
 	}
 		
 }]);
+
+app.controller('tapestryController', ['$scope','$http', 
+							  function($scope, $http){
+
+	$scope.test = 'Hello'
+	$scope.board = createTapestry.createBoard();
+}])
+
+
+
+
+
+

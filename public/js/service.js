@@ -9,3 +9,15 @@ app.service('authInterceptor', function($window,$location,$q){
 		}
 	}
 })
+
+app.service('createTapestry', function(){
+	return {
+		createBoard: function(){
+			this.canvas = document.getElementById('Tapestry');
+			this.canvas.height = 500;
+			this.canvas.width = 500;
+			this.ctx = this.canvas.getContext('2d');
+			this.canvas.background = #1c1949;
+		}
+	}
+})

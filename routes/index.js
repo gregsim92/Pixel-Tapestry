@@ -8,7 +8,8 @@ require('dotenv').config();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Sentimeta' });
+
+  res.render('index', { title: 'PixelTapestry' });
 });
 
 router.post('/new', function(req,res,next){
