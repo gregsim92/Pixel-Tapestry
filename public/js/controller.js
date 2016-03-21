@@ -23,7 +23,6 @@ app.controller('homeController',['$scope','$http',
 				url:'/login',
 				data:$scope.logIn
 			}).then(function(data){
-				debugger
 				localStorage.setItem('jwt',data.data.jwt);
 			}).catch(function(err){
 				console.log(err)
@@ -40,10 +39,24 @@ app.controller('tapestryController', ['$scope','$http', 'createTapestry',
 							  function($scope,  $http,   createTapestry){
 
 	$scope.test = 'Hello'
-	$scope.board = createTapestry.createBoard();
+	createTapestry.createBoard();
 
 	$scope.setBoard = function(){
 		createTapestry.loadBoard()
+	}
+
+	$scope.saveBoard = function(){
+		$scope.tapData = createTapestry.saveBoard()
+
+		$http({
+			method:'POST',
+			url:'/savetapestry',
+			data:$scope.tapData
+		}).then(function(){
+			console.log('fingers Crossed!')
+		}).catch(function(err){
+			console.log(err)
+		})
 	}
 }])
 
