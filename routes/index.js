@@ -58,6 +58,7 @@ router.post('/login', function(req,res,next){
 router.post('/savetapestry', function(req,res,next){
 			knex('canvas').insert({name:'second', canvas_data:req.body,favorites:0}).then(function(){
 			console.log(req.body);
+			res.send('yay');
 		})
 })
 
