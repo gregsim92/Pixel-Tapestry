@@ -56,7 +56,20 @@ router.post('/login', function(req,res,next){
 })
 
 router.post('/savetapestry', function(req,res,next){
-	
+			knex('canvas').insert({name:'second', canvas_data:req.body,favorites:0}).then(function(){
+			console.log(req.body);
+		})
 })
+
+router.get('/savetapestry', function(req,res,next){
+	knex('canvas').where({name:'second'}).first().then(function(data){
+		res.json(data);
+	})
+})
+/* #TODO: Multiple tables inner join
+	knex.select(*).from('canvas')
+		.innerJoin('favorites','canvas.id','favorites.canvas_id')
+		.innerJoin('users','users.id','favorites.user_id');
+*/
 
 module.exports = router;

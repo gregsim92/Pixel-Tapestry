@@ -55,13 +55,22 @@ app.controller('tapestryController', ['$scope','$http', 'createTapestry',
 		}).then(function(){
 			console.log('fingers Crossed!')
 		}).catch(function(err){
+			console.log('bOOOOOOOOO')
 			console.log(err)
 		})
 	}
+
+	$scope.retrieve = function(){
+
+		$http({
+			method:'GET',
+			url:'/savetapestry'
+		}).then(function(data){
+			createTapestry.finalBoard(data.data.canvas_data);
+		}).catch(function(err){
+			console.log('BAAAAD')
+			console.log(err)
+		})
+	}
+
 }])
-
-
-
-
-
-
