@@ -14,10 +14,11 @@ app.service('authInterceptor', function($window,$location,$q){
 
 app.service('createTapestry', function(){
 	return {
-		// private canvas warpper
+		color:'#cccccc',
 		canvas: null,
 
 		createBoard: function(){
+		    var that = this
 		    this.canvas = new fabric.Canvas('Tapestry')
 
 			var index = this.canvas
@@ -34,7 +35,7 @@ app.service('createTapestry', function(){
 						top: j * grid,
 						width: grid,
 						height: grid,
-						fill: '#cccccc',
+						fill: that.color,
 						hasControls: false,
 						hasBorders: false,
 						lockMovementX: true,
@@ -44,7 +45,7 @@ app.service('createTapestry', function(){
 						lockRotation: true
 					})
 					newRext.on('selected', function(){
-						this.fill = 'red'
+						this.fill = that.color
 						console.log(this)
 
 					})
@@ -58,14 +59,15 @@ app.service('createTapestry', function(){
 					})
 		},
 		loadBoard: function(data){
+			var that = this;
 			var canvasHolder = this.canvas;
 
-			this.canvas.loadFromJSON(data,canvasHolder.renderAll.bind(canvasHolder))
+			canvasHolder.loadFromJSON(data,canvasHolder.renderAll.bind(canvasHolder))
 			var objects = canvasHolder.getObjects()
 
 			for(key in objects) {
 				objects[key].on('selected', function(){
-					this.fill = 'green';
+					this.fill = that.color;
 					this.hasControls = false;
 					this.hasBorders = false;
 					this.lockMovementX = true;
@@ -73,6 +75,9 @@ app.service('createTapestry', function(){
 					this.lockScalingX = true;
 					this.lockScalingY = true;
 					this.lockRotation = true;
+				})
+				objects[key].on('modified', function(){
+					canvasHolder.modified = true;
 				})
 			}
 		},
@@ -82,9 +87,6 @@ app.service('createTapestry', function(){
 
 			return x;
 
-		},
-		changeColor: function(){
-			
 		}
 	}
 })

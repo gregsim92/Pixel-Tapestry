@@ -38,10 +38,13 @@ app.controller('homeController',['$scope','$http',
 app.controller('tapestryController', ['$scope','$http', 'createTapestry', 
 							  function($scope,  $http,   createTapestry){
 
-	$scope.test = 'Hello'
+	$scope.modified = false;
+	$scope.createTapestry = createTapestry;
+
 	createTapestry.createBoard();
 
 	$scope.saveBoard = function(){
+		$scope.isModified = false;
 		$scope.tapData = createTapestry.saveBoard()
 
 		$http({
@@ -57,7 +60,6 @@ app.controller('tapestryController', ['$scope','$http', 'createTapestry',
 	}
 
 	$scope.retrieve = function(){
-
 		$http({
 			method:'GET',
 			url:'/savetapestry'

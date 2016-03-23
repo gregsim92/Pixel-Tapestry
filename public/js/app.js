@@ -1,4 +1,4 @@
-var app = angular.module('pixelApp', ['angularMoment','ngRoute']);
+var app = angular.module('pixelApp', ['angularMoment','ngRoute','colorpicker.module']);
 
 app.config(function($routeProvider,$locationProvider,$httpProvider){
 
