@@ -25,7 +25,7 @@ app.service('createTapestry', function(){
 			index.setWidth(500);
 			index.setHeight(500);
 
-			var grid = 50;
+			var grid = 25;
 
 			for (var i = 0; i < 500 / grid; i++){
 				for (var j = 0; j < 500 / grid; j++){
@@ -35,6 +35,8 @@ app.service('createTapestry', function(){
 						width: grid,
 						height: grid,
 						fill: '#cccccc',
+						hasControls: false,
+						hasBorders: false,
 						lockMovementX: true,
 						lockMovementY: true,					
 						lockScalingX: true,
@@ -42,9 +44,8 @@ app.service('createTapestry', function(){
 						lockRotation: true
 					})
 					newRext.on('selected', function(){
-						console.log(newRext)
-						console.log(this, "SHOW ME THIS")
 						this.fill = 'red'
+						console.log(this)
 
 					})
 					this.canvas.add(newRext);
@@ -56,33 +57,31 @@ app.service('createTapestry', function(){
 						console.log('redraw')
 					})
 		},
-		loadBoard: function(){
-			var data = '{"objects":[{"type":"rect","originX":"left","originY":"top","left":50,"top":50,"width":20,"height":20,"fill":"green","stroke":null,"strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeLineJoin":"miter","strokeMiterLimit":10,"scaleX":1,"scaleY":1,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":null,"visible":true,"clipTo":null,"backgroundColor":"","fillRule":"nonzero","globalCompositeOperation":"source-over","rx":0,"ry":0}],"background":""}'
+		loadBoard: function(data){
 			var canvasHolder = this.canvas;
 
-			this.canvas.loadFromJSON(data,this.canvas.renderAll.bind(this.canvas), function(o,object){
-				fabric.log(o, object)
-				console.log(canvasHolder);
-				console.log('Green ' + JSON.stringify(o));
-				console.log('Object: ' + JSON.stringify(object));
-			})
+			this.canvas.loadFromJSON(data,canvasHolder.renderAll.bind(canvasHolder))
+			var objects = canvasHolder.getObjects()
+
+			for(key in objects) {
+				objects[key].on('selected', function(){
+					this.fill = 'green';
+					this.hasControls = false;
+					this.hasBorders = false;
+					this.lockMovementX = true;
+					this.lockMovementY = true;					
+					this.lockScalingX = true;
+					this.lockScalingY = true;
+					this.lockRotation = true;
+				})
+			}
 		},
 		saveBoard: function(){
 			var canvasHolder = this.canvas;
 			var x = JSON.stringify(canvasHolder.toDatalessJSON());
 
-			console.log(x)
 			return x;
 
-		},
-		finalBoard: function(data){
-			var canvasHolder = this.canvas;
-			var x = data;
-
-			canvasHolder.loadFromJSON(x,canvasHolder.renderAll.bind(canvasHolder), function(o,object){
-				fabric.log(o,object);
-
-			})
 		},
 		changeColor: function(){
 			

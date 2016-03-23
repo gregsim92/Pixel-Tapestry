@@ -41,10 +41,6 @@ app.controller('tapestryController', ['$scope','$http', 'createTapestry',
 	$scope.test = 'Hello'
 	createTapestry.createBoard();
 
-	$scope.setBoard = function(){
-		createTapestry.loadBoard()
-	}
-
 	$scope.saveBoard = function(){
 		$scope.tapData = createTapestry.saveBoard()
 
@@ -66,7 +62,7 @@ app.controller('tapestryController', ['$scope','$http', 'createTapestry',
 			method:'GET',
 			url:'/savetapestry'
 		}).then(function(data){
-			createTapestry.finalBoard(data.data.canvas_data);
+			createTapestry.loadBoard(data.data.canvas_data);
 		}).catch(function(err){
 			console.log('BAAAAD')
 			console.log(err)
