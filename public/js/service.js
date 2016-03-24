@@ -3,8 +3,10 @@ app.service('authInterceptor', function($window,$location,$q){
 		request: function(config){
 			var token = localStorage.getItem('jwt');
 
-			if(token) config.headers.Authorization = 'Bearer ' + token
+			if(token && config.url.indexOf('https://api.cloudinary.com/v1_1/dge7wytnb')===-1)
+			 {config.headers.Authorization = 'Bearer ' + token
 				console.log(config)
+			}
 			return config;
 		}
 	}
@@ -19,7 +21,10 @@ app.service('createTapestry', function(){
 
 		createBoard: function(){
 		    var that = this
+
 		    this.canvas = new fabric.Canvas('Tapestry')
+		    var ctx = this.canvas.getContext();
+		    console.log(this.canvas.toDataURL());
 
 			var index = this.canvas
 
@@ -87,6 +92,11 @@ app.service('createTapestry', function(){
 
 			return x;
 
+		},
+		getImgURL: function(){
+			return this.canvas.toDataURL()
 		}
+
+
 	}
 })

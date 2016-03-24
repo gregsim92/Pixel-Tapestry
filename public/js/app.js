@@ -1,6 +1,6 @@
-var app = angular.module('pixelApp', ['angularMoment','ngRoute','colorpicker.module']);
+var app = angular.module('pixelApp', ['angularMoment','ngRoute','colorpicker.module','cloudinary']);
 
-app.config(function($routeProvider,$locationProvider,$httpProvider){
+app.config(function($routeProvider,$locationProvider,$httpProvider,cloudinaryProvider){
 
 	$routeProvider
 		.when('/', {
@@ -12,6 +12,9 @@ app.config(function($routeProvider,$locationProvider,$httpProvider){
 			controller:'tapestryController'
 		})
 		.otherwise({ redirectTo: '/' });
+
+	cloudinaryProvider
+		.set("cloud_name, 'dge7wytnb'")
 
 
 	$httpProvider.interceptors.push('authInterceptor');
