@@ -1,7 +1,11 @@
-app.controller('homeController',['$scope','$http', 
-						 function($scope,  $http){
-		$scope.user = {
-			email : decoded.email
+app.controller('homeController',['$scope','$http', '$location',
+						 function($scope,  $http,   $location){
+		// $scope.user = {
+		// 	email : decoded.email
+		// }
+
+		$scope.toCanvas = function(){
+			$location.path('/tapestry')
 		}
 
 		$scope.signup = function(){
@@ -41,6 +45,14 @@ app.controller('tapestryController', ['$scope','$http', 'createTapestry',
 	$scope.createTapestry = createTapestry;
 
 	createTapestry.createBoard();
+	$scope.pics = {};
+
+	$http({
+		method:'GET',
+		url:'/loadtapestry'
+	}).then(function(data){
+		$scope.pics = data.data
+	})
 
 	$scope.saveBoard = function(){
 
@@ -87,5 +99,6 @@ app.controller('tapestryController', ['$scope','$http', 'createTapestry',
 			console.log(err)
 		})
 	}
+
 
 }])
