@@ -1,14 +1,21 @@
-var app = angular.module('pixelApp', ['angularMoment','ngRoute']);
+var app = angular.module('pixelApp', ['angularMoment','ngRoute','colorpicker.module','cloudinary']);
 
-app.config(function($routeProvider,$locationProvider,$httpProvider){
+app.config(function($routeProvider,$locationProvider,$httpProvider,cloudinaryProvider){
 
 	$routeProvider
 		.when('/', {
 			templateUrl:'/pages/index.html',
 			controller:'homeController'
 		})
+		.when('/tapestry', {
+			templateUrl:'/pages/canvas.html',
+			controller:'tapestryController'
+		})
+		.otherwise({ redirectTo: '/' });
 
-	$locationProvider.html5Mode(true);
+	cloudinaryProvider
+		.set("cloud_name, 'dge7wytnb'")
+
 
 	$httpProvider.interceptors.push('authInterceptor');
 

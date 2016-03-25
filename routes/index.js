@@ -8,7 +8,8 @@ require('dotenv').config();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Sentimeta' });
+
+  res.render('index', { title: 'PixelTapestry' });
 });
 
 router.post('/new', function(req,res,next){
@@ -53,5 +54,23 @@ router.post('/login', function(req,res,next){
 			}
 	})
 })
+
+router.post('/savetapestry', function(req,res,next){
+			knex('canvas').insert({name:'fourth', canvas_data:req.body,favorites:0}).then(function(){
+			console.log(req.body);
+			res.send('yay');
+		})
+})
+
+router.get('/savetapestry', function(req,res,next){
+	knex('canvas').where({name:'fourth'}).first().then(function(data){
+		res.json(data);
+	})
+})
+/* #TODO: Multiple tables inner join
+	knex.select(*).from('canvas')
+		.innerJoin('favorites','canvas.id','favorites.canvas_id')
+		.innerJoin('users','users.id','favorites.user_id');
+*/
 
 module.exports = router;

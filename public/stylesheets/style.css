@@ -1,8 +1,7 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
 
-a {
-  color: #00B7FF;
+
+#TapestryContain {
+	border: 1px solid red;
+	width: 800px;
+	height: 500px;
 }
