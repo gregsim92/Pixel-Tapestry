@@ -97,6 +97,5 @@ app.service('createTapestry', function(){
 			return this.canvas.toDataURL()
 		}
 
-
 	}
 })

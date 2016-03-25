@@ -67,6 +67,12 @@ router.get('/savetapestry', function(req,res,next){
 		res.json(data);
 	})
 })
+
+router.get('/loadtapestry', function(req,res,next){
+	knex.select('id','name').from('canvas').then(function(data){
+		res.json(data);
+	})
+})
 /* #TODO: Multiple tables inner join
 	knex.select(*).from('canvas')
 		.innerJoin('favorites','canvas.id','favorites.canvas_id')
