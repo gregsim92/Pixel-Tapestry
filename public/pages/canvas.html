@@ -11,9 +11,11 @@
 <div>
 	<input colorpicker type="button" ng-model='createTapestry.color'>
 </div>
-<img src="http://res.cloudinary.com/dge7wytnb/image/upload/v1458857597/ldzohr0c7ub1xfrdgjuu.png" alt="smiley">
 
-<div ng-repeat='pic in pics'>
-	<h1> {{pic.id}} </h1>
-	<h1> {{pic.name}} </h1>
+<div class='canvasContainer'>
+	<div ng-repeat='pic in pics'>
+		<p> {{pic.id}} </p>
+		<h1> {{pic.name}} </h1>
+		<img ng-src="{{pic.img_url}}" alt="pic">
+	</div>
 </div>

@@ -56,8 +56,7 @@ router.post('/login', function(req,res,next){
 })
 
 router.post('/savetapestry', function(req,res,next){
-			knex('canvas').insert({name:'fourth', canvas_data:req.body,favorites:0}).then(function(){
-			console.log(req.body);
+			knex('canvas').insert({name:'fourth', canvas_data:req.body.canvas, img_url: req.body.imgURL, favorites:0}).then(function(){
 			res.send('yay');
 		})
 })
@@ -69,9 +68,13 @@ router.get('/savetapestry', function(req,res,next){
 })
 
 router.get('/loadtapestry', function(req,res,next){
-	knex.select('id','name').from('canvas').then(function(data){
+	knex.select('id','name','img_url').from('canvas').then(function(data){
 		res.json(data);
 	})
+})
+
+router.post('/favorite', function(req,res,next){
+
 })
 /* #TODO: Multiple tables inner join
 	knex.select(*).from('canvas')

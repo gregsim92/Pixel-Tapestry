@@ -5,3 +5,10 @@
 	width: 800px;
 	height: 500px;
 }
+
+.canvasContainer {
+	width: 700px;
+	height: 800px;
+	overflow: scroll;
+	border: 1px solid blue;
+}
