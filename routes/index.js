@@ -56,13 +56,14 @@ router.post('/login', function(req,res,next){
 })
 
 router.post('/savetapestry', function(req,res,next){
-			knex('canvas').insert({name:'fourth', canvas_data:req.body.canvas, img_url: req.body.imgURL, favorites:0}).then(function(){
-			res.send('yay');
+			knex('canvas').insert({name:req.body.name, canvas_data:req.body.canvas, img_url: req.body.img_url, favorites:0}).then(function(){
+			res.send('successful save');
 		})
 })
 
-router.get('/savetapestry', function(req,res,next){
-	knex('canvas').where({name:'fourth'}).first().then(function(data){
+router.post('/gettapestry', function(req,res,next){
+
+	knex('canvas').where({id:req.body.id}).first().then(function(data){
 		res.json(data);
 	})
 })

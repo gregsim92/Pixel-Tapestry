@@ -1,4 +1,4 @@
-var app = angular.module('pixelApp', ['angularMoment','ngRoute','colorpicker.module','cloudinary']);
+var app = angular.module('pixelApp', ['ngRoute','colorpicker.module','cloudinary']);
 
 app.config(function($routeProvider,$locationProvider,$httpProvider,cloudinaryProvider){
 

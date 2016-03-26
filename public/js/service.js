@@ -24,7 +24,6 @@ app.service('createTapestry', function(){
 
 		    this.canvas = new fabric.Canvas('Tapestry')
 		    var ctx = this.canvas.getContext();
-		    console.log(this.canvas.toDataURL());
 
 			var index = this.canvas
 
@@ -51,7 +50,6 @@ app.service('createTapestry', function(){
 					})
 					newRext.on('selected', function(){
 						this.fill = that.color
-						console.log(this)
 
 					})
 					this.canvas.add(newRext);
@@ -60,7 +58,6 @@ app.service('createTapestry', function(){
 			}
 					this.canvas.on('mouse:up', function(){
 						index.renderAll.bind(index)
-						console.log('redraw')
 					})
 		},
 		loadBoard: function(data){

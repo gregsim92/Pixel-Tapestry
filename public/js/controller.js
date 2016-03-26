@@ -1,8 +1,16 @@
-app.controller('homeController',['$scope','$http', '$location',
-						 function($scope,  $http,   $location){
-		// $scope.user = {
-		// 	email : decoded.email
-		// }
+app.controller('homeController',['$scope','$http', '$location', 'createTapestry',
+						 function($scope,  $http,   $location,   createTapestry){
+
+		$scope.picDemo = {}
+
+		$http({
+			method:'GET',
+			url:'/loadtapestry'
+		}).then(function(data){
+
+		$scope.pics = data.data
+	})
+
 
 		$scope.toCanvas = function(){
 			$location.path('/tapestry')
@@ -43,8 +51,8 @@ app.controller('tapestryController', ['$scope','$http', 'createTapestry',
 							  function($scope,  $http,   createTapestry){
 
 	$scope.createTapestry = createTapestry;
-
 	createTapestry.createBoard();
+
 	$scope.pics = {};
 	$scope.currentBoard = {};
 	$scope.tapData = {};
@@ -57,28 +65,33 @@ app.controller('tapestryController', ['$scope','$http', 'createTapestry',
 		$scope.pics = data.data
 	})
 
-	$scope.save = function(){
+	$scope.pushToDB = function(){
 
 		$scope.tapData.canvas = createTapestry.saveBoard()
+		$scope.tapData.name = $scope.currentBoard.name;
 
 		$http({
 			method:'POST',
 			url:'/savetapestry',
 			data:$scope.tapData
 		}).then(function(){
-			console.log('fingers Crossed!')
+			console.log($scope.tapData)
+			$scope.pics.push($scope.tapData)
 		}).catch(function(err){
 			console.log('bOOOOOOOOO')
 			console.log(err)
 		})
 	}
 
-	$scope.retrieve = function(){
+	$scope.retrieve = function(pic){
 		$http({
-			method:'GET',
-			url:'/savetapestry'
+			method:'POST',
+			url:'/gettapestry',
+			data: {
+				id: pic.id
+			}
 		}).then(function(data){
-			$scope.currentBoard = data.data
+			$scope.currentBoard = data.data;
 			createTapestry.loadBoard(data.data.canvas_data);
 		}).catch(function(err){
 			console.log('BAAAAD')
@@ -86,7 +99,7 @@ app.controller('tapestryController', ['$scope','$http', 'createTapestry',
 		})
 	}
 
-	$scope.upload = function(){
+	$scope.save = function(){
 		$http({
 			method:'POST',
 			url:'https://api.cloudinary.com/v1_1/dge7wytnb/image/upload',
@@ -95,8 +108,9 @@ app.controller('tapestryController', ['$scope','$http', 'createTapestry',
 				file:createTapestry.getImgURL(),
 			}
 		}).then(function(data){
-			$scope.tapData.imgURL = data.data.secure_url
-			$scope.save()
+			$scope.tapData.img_url = data.data.secure_url
+			debugger;
+			$scope.pushToDB()
 		}).catch(function(err){
 			console.log('failed')
 			console.log(err)
@@ -107,11 +121,10 @@ app.controller('tapestryController', ['$scope','$http', 'createTapestry',
 		$http({
 			method:'POST',
 			url:'/favorite',
-			data:$scope.currentBoard
+			data:$scope.tapData
 		}).then(function(data){
 			console.log(data)
 		})
 	}
-
 
 }])

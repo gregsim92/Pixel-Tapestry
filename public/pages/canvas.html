@@ -1,21 +1,28 @@
 
-
-<div id='TapestryContain'>
-	<canvas id='Tapestry'></canvas>
+<div class='Title'>
+	<h1>Pixel Tapestry</h1>
 </div>
+<div id='canvasBody'>
+	<div class='canvasTitle'>
+		<input type="text" ng-model='currentBoard.name' value='currentBoard.name'>
+	</div>
 
-<input type="submit" ng-click='saveBoard()' value='save'>
-<input type="submit" ng-click='retrieve()' value='retrieve'>
-<input type="submit" ng-click='upload()' value='upload'>
+	<div id='TapestryContain'>
+			<canvas id='Tapestry'></canvas>
+			<input colorpicker type="button" ng-model='createTapestry.color' ng-style='color= createTapestry.color'>
+	</div>
 
-<div>
-	<input colorpicker type="button" ng-model='createTapestry.color'>
-</div>
 
-<div class='canvasContainer'>
-	<div ng-repeat='pic in pics'>
-		<p> {{pic.id}} </p>
-		<h1> {{pic.name}} </h1>
-		<img ng-src="{{pic.img_url}}" alt="pic">
+	<div id='canvasList'>
+		<div class='canvasBlock' ng-repeat='pic in pics' ng-dblclick='retrieve(pic)'>
+			<div class='listCanvas'>
+				<img ng-src="{{pic.img_url}}" alt="pic" class='imgRepeat'>
+			</div>
+			<div>
+				<h1> {{pic.name}} </h1>
+			</div>
+		</div>
+
+			<input type="submit" ng-click='save()' value='Save Tapestry'>
 	</div>
 </div>
