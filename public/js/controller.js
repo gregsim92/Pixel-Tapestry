@@ -1,16 +1,6 @@
 app.controller('homeController',['$scope','$http', '$location', 'createTapestry',
 						 function($scope,  $http,   $location,   createTapestry){
 
-		$scope.picDemo = {}
-
-		$http({
-			method:'GET',
-			url:'/loadtapestry'
-		}).then(function(data){
-
-		$scope.pics = data.data
-	})
-
 
 		$scope.toCanvas = function(){
 			$location.path('/tapestry')
@@ -109,7 +99,6 @@ app.controller('tapestryController', ['$scope','$http', 'createTapestry',
 			}
 		}).then(function(data){
 			$scope.tapData.img_url = data.data.secure_url
-			debugger;
 			$scope.pushToDB()
 		}).catch(function(err){
 			console.log('failed')

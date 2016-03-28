@@ -1,22 +1,23 @@
+<nav class='navbar navbar-default'>
+	<div class='container-fluid'>
+		<div class='navbar-header'>
+			<a class='navbar-brand' href='/#/'>
+				<span>Pixel Tapestry</span>
+			</a>
+		</div>
 
-<body>
-	<div>
-		<label>Email
-		<input type="email" ng-model='signUp.email' name='email'></label>
-		<label>Password
-		<input type="password" ng-model='signUp.password' name='password'></label>
-		<label>Confirm Password
-		<input type="password" ng-model='signUp.passwordConfirm' name='passwordConfirm'></label>
-		<input type="submit" ng-click='signup()' value='Sign up'>
+		<ul>
+			
+		</ul>
 	</div>
-	<div>
-		<label>Email
-		<input type="email" ng-model='logIn.email' name='email'></label>
-		<label>Password
-		<input type="password" ng-model='logIn.password' name='password'></label>
-		<input type="submit" ng-click='login()' value='Log in'>
+</nav>
+<div class='indexBody'>
+	<div class='tapDemo'>
+		<img src="http://res.cloudinary.com/dge7wytnb/image/upload/v1459132886/ik6ydnalfl3ogntowavi.png" alt="mountain">
 	</div>
-	<div>
-		<button ng-click='toCanvas()' value='Create A Tapestry'></button>
+	<div id='startDiv'>
+		<button class ='btn btn-success' id='startButton' ng-click='toCanvas()'>Create A Tapestry
+		</button>
 	</div>
-</body>
+
+</div>

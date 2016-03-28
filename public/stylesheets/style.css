@@ -1,12 +1,40 @@
-h1, p, input {
-	font: Helvetica;
+.navbar {
+	margin-bottom: 0px;
 }
+
+.indexBody {
+	background-color: #B9C9DC;
+	margin-top: -50px;
+    padding-top: 100px;
+	padding-bottom: 50%;
+}
+
+.tapDemo {
+	width: 500px;
+	height: 500px;
+	margin: auto;
+}
+
+#startDiv {
+	margin: 25px;
+	text-align: center;
+}
+
+#startButton {
+	text-align: center;
+	margin: auto;
+    width: 250px;
+    height: 50px;
+    font-size: 22px;
+}
+
 .Title {
 	text-align: center;
 	margin-bottom: 20px;
 }
 
 #canvasBody {
+	padding-top: 30px;
 	margin: auto;
 	background-color: #B9C9DC;
 }
@@ -29,6 +57,12 @@ h1, p, input {
 
 .canvasTitle > input{
 	margin: 20px;
+    width: 500px;
+    height: 30px;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 5px;
+
 }
 
 #canvasList {
@@ -44,6 +78,9 @@ h1, p, input {
 
 .listCanvas {
 	width: 200px;
+	padding-top: 15px;
+	margin-left: 20px;
+    margin-right: 25px;
 	float: left;
 }
 
