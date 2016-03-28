@@ -1,3 +1,6 @@
+h1, p, input {
+	font: Helvetica;
+}
 .Title {
 	text-align: center;
 	margin-bottom: 20px;
@@ -12,7 +15,7 @@
 }
 
 #TapestryContain {
-	border: 1px solid red;
+	border: 1px solid blue;
 	background: #EFF0F2;
 	margin: auto;
 	text-align: center;
@@ -21,15 +24,16 @@
 }
 .canvasTitle{
 	text-align: center;
+	cursor: url('/images/icon-684.png'), text;
 }
 
-#tapestryPallette {
-	float: right;
+.canvasTitle > input{
+	margin: 20px;
 }
 
 #canvasList {
 	width: 800px;
-	height: 800px;
+	height: 600px;
 	margin: auto;
 	margin-top: 50px;
 	background-color: #EFF0F2;
@@ -53,3 +57,8 @@
 	clear: both;
 	margin-top: 15px;
 }
+
+.canvasBlock:hover{
+	box-shadow: 1px 1px 8px 1px; 
+	cursor:pointer;
+};

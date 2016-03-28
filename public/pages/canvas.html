@@ -9,7 +9,10 @@
 
 	<div id='TapestryContain'>
 			<canvas id='Tapestry'></canvas>
-			<input colorpicker type="button" ng-model='createTapestry.color' ng-style='color= createTapestry.color'>
+			<div class='pallette'>
+				<button colorpicker class='btn btn-success' type="button" ng-model='createTapestry.color' ng-click='previewColor={background-color:"createTapestry.color"}' ng-style='previewColor'>Change Color</button>
+				<button class='btn btn-primary' type="button" ng-click='save()'>Save Tapestry</button>
+			</div>
 	</div>
 
 
@@ -23,6 +26,6 @@
 			</div>
 		</div>
 
-			<input type="submit" ng-click='save()' value='Save Tapestry'>
+			
 	</div>
 </div>

@@ -29,6 +29,7 @@ app.service('createTapestry', function(){
 
 			index.setWidth(500);
 			index.setHeight(500);
+			index.hoverCursor = 'url("images/icon-684.png") 10 10, crosshair';
 
 			var grid = 25;
 
